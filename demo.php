@@ -19,6 +19,7 @@ require 'Address.inc';
     $address->subdivision = 'Mengo';
     $address->cityName = 'Kampala';
     $address->streetAddress1 = '1251';
+    $address->address_type_id = 1;
     $address->streetAddress2 = '9021';
     echo '<h2>Address object</h2>';
     echo '<tt><pre>'.var_export($address,true).'</pre></tt>';
@@ -47,3 +48,9 @@ require 'Address.inc';
     echo '<h2>Displaying address types</h2>';
     echo '<pre>'.var_export(Address::$validAddressTypes,true).'</pre>';
 
+    echo '<h2>Testing validation of the address id</h2>';
+    for ($id = 0; $id <= 4; $id++){
+        echo '<div> '.$id. ':';
+        echo Address::isValidAddressTypeId($id) ? 'Valid' : 'Invalid';
+        echo '</div>';
+    }

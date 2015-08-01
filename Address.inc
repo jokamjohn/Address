@@ -41,6 +41,9 @@ class Address {
     //Primary key of an Address
     protected $_addressId;
 
+    //Address typeId
+    protected $_address_type_id;
+
     //when the record was created and last updated
     protected $_timeCreated;
     protected $_timeUpdated;
@@ -97,6 +100,11 @@ class Address {
      */
     function __set($name, $value)
     {
+        //Only set valid address type id
+        if ('address_type_id' == $name){
+            $this->_setAddressTypeId($value);
+            return;
+        }
         //Allow anything to change the value
         if('postalCode' == $name){
             $this->$name = $value;
@@ -149,5 +157,26 @@ class Address {
         $output.=$this->countryName;
         return $output;
     }
+
+    /**Determine if an address type is valid
+     * @param int $addressId
+     * @return bool
+     */
+    public static function isValidAddressTypeId ($addressId){
+        return array_key_exists($addressId,self::$validAddressTypes);
+    }
+
+    /**
+     * If valid set the address type
+     * @param mixed $address_type_id
+     */
+    protected function _setAddressTypeId($address_type_id)
+    {
+        if(self ::isValidAddressTypeId($address_type_id)){
+            $this->_address_type_id = $address_type_id;
+        }
+    }
+
+
 
 }
