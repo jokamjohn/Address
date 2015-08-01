@@ -35,9 +35,9 @@ class Address {
 
         //Street address
         $output.= $this->streetAddress1;
+        $output.='<br/>';
         if($this->streetAddress2){
             $output.=$this->streetAddress2;
-            $output.='<br/>';
         }
 
         //city, subdivision, postal
