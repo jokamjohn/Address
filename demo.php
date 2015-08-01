@@ -40,3 +40,6 @@ require 'Address.inc';
     ));
 
     echo $address_2->display();
+
+    echo '<h2>Address2 __toString</h2>';
+    echo $address_2;

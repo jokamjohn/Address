@@ -92,10 +92,6 @@ class Address {
         //Unable to access property: trigger error
         trigger_error('Undefined or unallowed property via __set()'.$name);
     }
-
-
-
-
     /**
      * Guess the postal code given the subdivision and city
      * TODO Replace with database lookup
@@ -104,6 +100,17 @@ class Address {
     protected function _postal_code_guess(){
         return "LOOKUP";
     }
+
+    /**
+     * magic __toString
+     * @return string
+     */
+    function __toString()
+    {
+        //this is polymorphism
+        return $this->display();
+    }
+
 
     /**
      * Display an address in Html
