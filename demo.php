@@ -11,7 +11,7 @@ require 'Address.inc';
     $address = new Address();
     //inspecting the object
     echo '<h2>Empty object</h2>';
-    echo '<tt><pre>'.var_export($address).'</pre></tt>';
+    echo '<tt><pre>'.var_export($address,true).'</pre></tt>';
 
 //assigning values
     $address->countryName = 'Uganda';
@@ -21,7 +21,7 @@ require 'Address.inc';
     $address->streetAddress1 = '1251';
     $address->streetAddress2 = '9021';
     echo '<h2>Address object</h2>';
-    echo '<tt><pre>'.var_export($address).'</pre></tt>';
+    echo '<tt><pre>'.var_export($address,true).'</pre></tt>';
 
 //calling the dispaly method
     echo '<h2>Testing magic get and set</h2>';
@@ -43,3 +43,7 @@ require 'Address.inc';
 
     echo '<h2>Address2 __toString</h2>';
     echo $address_2;
+
+    echo '<h2>Displaying address types</h2>';
+    echo '<pre>'.var_export(Address::$validAddressTypes,true).'</pre>';
+

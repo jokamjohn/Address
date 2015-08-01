@@ -9,6 +9,14 @@
  * Physical Address
  */
 class Address {
+
+    //Address types
+    public static $validAddressTypes = array(
+        1 => 'Residence',
+        2 => 'Business',
+        3 => 'Park'
+    );
+
     //street address
     public $streetAddress1;
     public $streetAddress2;
