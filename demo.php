@@ -24,5 +24,7 @@ require 'Address.inc';
     echo '<tt><pre>'.var_export($address).'</pre></tt>';
 
 //calling the dispaly method
-    echo '<h2>Display Address</h2>';
-    echo "Address ID: {$address->_addressId}";
+    echo '<h2>Testing magic get and set</h2>';
+    unset($address->postalCode);
+    echo $address->display();
+
