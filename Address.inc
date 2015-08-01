@@ -25,6 +25,12 @@ class Address {
     //Name of the country
     public $countryName;
 
+    //Primary key of an Address
+    protected $_addressId;
+
+    //when the record was created and last updated
+    protected $_timeCreated;
+    protected $_timeUpdated;
 
     /**
      * Display an address in Html
