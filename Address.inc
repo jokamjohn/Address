@@ -32,10 +32,33 @@ class Address {
     protected $_timeCreated;
     protected $_timeUpdated;
 
+    function __construct($data = array())
+    {
+        $this->_timeCreated = time();
+        //Ensure the address can be populated
+        if (!is_array($data)){
+            trigger_error('Unable to construct address with a '.get_class($name));
+        }
+        //If there is at least one value populate the address
+        if(count($data) > 0){
+            foreach ($data as $name => $value){
+                //special case for protected properties
+                if (in_array($name,array(
+                    'timeCreated',
+                    'timeUpdated',
+                ))){
+                    $name = '_'.$name;
+                }
+                $this->$name = $value;
+            }
+        }
+    }
+
+
     /**
      * Magic __get
      * @param string $name
-     * @return null
+     * @return mixed
      */
     function __get($name)
     {
@@ -57,6 +80,7 @@ class Address {
      * Magic __set
      * @param string $name
      * @param string $value
+     * @return mixed
      */
     function __set($name, $value)
     {

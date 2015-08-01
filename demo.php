@@ -28,3 +28,15 @@ require 'Address.inc';
     unset($address->postalCode);
     echo $address->display();
 
+    echo '<h2>Testing __construct with an array</h2>';
+    $address_2 = new Address(array(
+        'countryName' => 'Uganda',
+        'postalCode'=> '256',
+        'subdivision' => 'Mengo',
+        'cityName' => 'Kampala',
+        'streetAddress1' => '1251',
+        'streetAddress2' => '265'
+
+    ));
+
+    echo $address_2->display();
