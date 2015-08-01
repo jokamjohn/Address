@@ -5,7 +5,8 @@
  * Date: 8/1/2015
  * Time: 12:53 PM
  */
-require 'Address.inc';
+    require 'Address.inc';
+    require 'Database.inc';
 
     echo '<h2>Instantiating Address</h2>';
     $address = new Address();
@@ -15,9 +16,8 @@ require 'Address.inc';
 
 //assigning values
     $address->countryName = 'Uganda';
-    $address->postalCode = '256';
-    $address->subdivision = 'Mengo';
-    $address->cityName = 'Kampala';
+    $address->subdivision = 'State';
+    $address->cityName = 'Townsville';
     $address->streetAddress1 = '1251';
     $address->address_type_id = 1;
     $address->streetAddress2 = '9021';
@@ -32,9 +32,8 @@ require 'Address.inc';
     echo '<h2>Testing __construct with an array</h2>';
     $address_2 = new Address(array(
         'countryName' => 'Uganda',
-        'postalCode'=> '256',
-        'subdivision' => 'Mengo',
-        'cityName' => 'Kampala',
+        'subdivision' => 'Region',
+        'cityName' => 'Villageland',
         'streetAddress1' => '1251',
         'streetAddress2' => '265'
 
