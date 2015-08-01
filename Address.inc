@@ -10,11 +10,16 @@
  */
 class Address {
 
+    //constants
+    const ADDRESS_TYPE_RESIDENCE = 1;
+    const ADDRESS_TYPE_BUSINESS = 2;
+    const ADDRESS_TYPE_PARK = 3;
+
     //Address types
     public static $validAddressTypes = array(
-        1 => 'Residence',
-        2 => 'Business',
-        3 => 'Park'
+        Address::ADDRESS_TYPE_RESIDENCE => 'Residence',
+        Address::ADDRESS_TYPE_BUSINESS => 'Business',
+        Address::ADDRESS_TYPE_PARK => 'Park'
     );
 
     //street address
