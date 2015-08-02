@@ -63,6 +63,8 @@ abstract class Address implements Model{
                 if (in_array($name,array(
                     'timeCreated',
                     'timeUpdated',
+                    'addressId',
+                    'address_type_id'
                 ))){
                     $name = '_'.$name;
                 }
@@ -214,15 +216,25 @@ abstract class Address implements Model{
     $db = Database::getInstance();
         $mysqli = $db->getConnection();
 
-        $query = 'SELECT address.*';
-        $query .= ' FROM address';
-        $query .= ' WHERE address_id ="'. (int)$addressId.'"';
+        $sql_query  = 'SELECT address.* ';
+        $sql_query .= 'FROM address ';
+        $sql_query .= 'WHERE address_id = "' . (int) $addressId . '" ';
 
-        $result = $mysqli->query($query);
-        if ($row = $result->fetch_object()){
-            var_dump($row);
-            exit;
-        }
+        $result = $mysqli->query($sql_query);
+//        if ($row = $result->fetch_assoc()) {
+//            return self::getInstance($row['address_type_id'], $row);
+//        }
+    }
+
+    /**
+     * Given an addressTypeId, return an instance of that subclass
+     * @param int $addressTypeId
+     * @param array $data
+     * @return mixed
+     */
+    final public static function getInstance($addressTypeId, $data=array()){
+        $className = 'Address'.self::$validAddressTypes[$addressTypeId];
+        return new $className($data);
     }
 
     /*
