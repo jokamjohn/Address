@@ -8,7 +8,7 @@
 /*
  * Physical Address
  */
-abstract class Address {
+abstract class Address implements Model{
 
     //constants
     const ADDRESS_TYPE_RESIDENCE = 1;
@@ -203,6 +203,23 @@ abstract class Address {
         }
     }
 
+    /**
+     * load an address
+     * This function prevents the children from saving in a different way (keyword final)
+     * Children cannot override this method
+     * @param int $addressId
+     * @return mixed|void
+     */
+    final public static function load($addressId){
+
+    }
+
+    /*
+     * Save an Address
+     */
+    final public function save(){
+
+    }
 
 
 }
