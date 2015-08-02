@@ -15,25 +15,25 @@
     }
 
     echo '<h2>Instantiating Address</h2>';
-    $address = new Address();
+    $addressResidence = new AddressResidence();
     //inspecting the object
     echo '<h2>Empty object</h2>';
-    echo '<tt><pre>'.var_export($address,true).'</pre></tt>';
+    echo '<tt><pre>'.var_export($addressResidence,true).'</pre></tt>';
 
 //assigning values
-    $address->countryName = 'Uganda';
-    $address->subdivision = 'State';
-    $address->cityName = 'Townsville';
-    $address->streetAddress1 = '1251';
-    $address->address_type_id = 1;
-    $address->streetAddress2 = '9021';
+    $addressResidence->countryName = 'Uganda';
+    $addressResidence->subdivision = 'State';
+    $addressResidence->cityName = 'Townsville';
+    $addressResidence->streetAddress1 = '1251';
+    $addressResidence->address_type_id = 1;
+    $addressResidence->streetAddress2 = '9021';
     echo '<h2>Address object</h2>';
-    echo '<tt><pre>'.var_export($address,true).'</pre></tt>';
+    echo '<tt><pre>'.var_export($addressResidence,true).'</pre></tt>';
 
 //calling the dispaly method
     echo '<h2>Testing magic get and set</h2>';
-    unset($address->postalCode);
-    echo $address->display();
+    unset($addressResidence->postalCode);
+    echo $addressResidence->display();
 
     echo '<h2>Testing __construct with an array</h2>';
     $address_2 = new Address(array(
