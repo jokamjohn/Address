@@ -13,14 +13,28 @@
      */
 class AddressPark extends Address {
 
-    /**
-     * Overriding the country in Address
-     * @var string
-     */
-    public $countryName = 'Uganda';
+//    /**
+//     * Overriding the country in Address
+//     * @var string
+//     */
+//    public $countryName = 'Uganda';
 
 
-    /**
+        /**
+         * Overriding the parent method
+         * @return string
+         */
+        function display()
+        {
+            $output = '<div style="background-color: brown">';
+            $output .= parent::display();
+            $output .= '</div';
+            return $output;
+        }
+
+
+
+        /**
      * Force extending classes to implement init method
      * Add function to the __construct method
      * @return mixed
