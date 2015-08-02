@@ -50,6 +50,7 @@ abstract class Address {
 
     function __construct($data = array())
     {
+        $this->_init();
         $this->_timeCreated = time();
         //Ensure the address can be populated
         if (!is_array($data)){
@@ -100,11 +101,7 @@ abstract class Address {
      */
     function __set($name, $value)
     {
-        //Only set valid address type id
-        if ('address_type_id' == $name){
-            $this->_setAddressTypeId($value);
-            return;
-        }
+        //No need to set the address id, since its now automatic
         //Allow anything to change the value
         if('postalCode' == $name){
             $this->$name = $value;
@@ -152,6 +149,14 @@ abstract class Address {
         //this is polymorphism
         return $this->display();
     }
+
+
+    /**
+     * Force extending classes to implement init method
+     * Add function to the __construct method in Address class
+     * @return mixed
+     */
+    abstract protected function _init();
 
 
     /**

@@ -25,7 +25,6 @@
     $addressResidence->subdivision = 'State';
     $addressResidence->cityName = 'Townsville';
     $addressResidence->streetAddress1 = '1251';
-    $addressResidence->address_type_id = 1;
     $addressResidence->streetAddress2 = '9021';
     echo '<h2>Address object</h2>';
     echo '<tt><pre>'.var_export($addressResidence,true).'</pre></tt>';

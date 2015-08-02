@@ -13,4 +13,14 @@
      */
 class AddressBusiness extends Address {
 
+
+    /**
+     * Force extending classes to implement init method
+     * Add function to the __construct method
+     * @return mixed
+     */
+    protected function _init()
+    {
+        $this->_setAddressTypeId(Address::ADDRESS_TYPE_BUSINESS);
+    }
 }
