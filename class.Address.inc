@@ -23,23 +23,23 @@ abstract class Address implements Model{
     );
 
     //street address
-    public $streetAddress1;
-    public $streetAddress2;
+    public $street_address_1;
+    public $street_address_2;
 
     //Name of city
-    public $cityName;
+    public $city_name;
 
     //subdivison
-    public $subdivision;
+    public $subdivision_name;
 
     //Name of subdivision
     protected $_postalCode;
 
     //Name of the country
-    public $countryName;
+    public $country_name;
 
     //Primary key of an Address
-    protected $_addressId;
+    protected $_address_id;
 
     //Address typeId
     protected $_address_type_id;
@@ -50,6 +50,7 @@ abstract class Address implements Model{
 
     function __construct($data = array())
     {
+
         $this->_init();
         $this->_timeCreated = time();
         //Ensure the address can be populated
@@ -63,10 +64,10 @@ abstract class Address implements Model{
                 if (in_array($name,array(
                     'timeCreated',
                     'timeUpdated',
-                    'addressId',
-                    'address_type_id'
+                    'address_id',
+                    'address_type_id',
                 ))){
-                    $name = '_'.$name;
+                     $name = '_'.$name;
                 }
                 $this->$name = $value;
             }
@@ -110,7 +111,7 @@ abstract class Address implements Model{
             return;
         }
         //Unable to access property: trigger error
-        trigger_error('Undefined or unallowed property via __set()'.$name);
+//        trigger_error('Undefined or unallowed property via __set()'.$name);
     }
     /**
      * Guess the postal code given the subdivision and city
@@ -123,19 +124,19 @@ abstract class Address implements Model{
         $sql_query = 'SELECT postal_code';
         $sql_query .= ' FROM location';
 
-        $city_name = $mysqli->real_escape_string($this->cityName);
+        $city_name = $mysqli->real_escape_string($this->city_name);
         $sql_query .= ' WHERE city_name = " '.$city_name.'"';
 
-        $subdivision_name = $mysqli->real_escape_string($this->subdivision);
+        $subdivision_name = $mysqli->real_escape_string($this->subdivision_name);
         $sql_query .= ' AND subdivision_name = "'.$subdivision_name.'"';
 
         //prints the query statement
-        print_r($sql_query);
+//        print_r($sql_query);
 
         $result = $mysqli->query($sql_query);
 
         //checks for the validity of the query, returns boolean
-        var_dump($result);
+//        var_dump($result);
 
         if ($row = $result->fetch_assoc()){
             return $row['postal_code'];
@@ -169,20 +170,20 @@ abstract class Address implements Model{
         $output= "";
 
         //Street address
-        $output.= $this->streetAddress1;
+        $output.= $this->street_address_1;
         $output.='<br/>';
-        if($this->streetAddress2){
-            $output.=$this->streetAddress2;
+        if($this->street_address_2){
+            $output.=$this->street_address_2;
         }
 
         //city, subdivision, postal
         $output.='<br/>';
-        $output.=$this->cityName.', '.$this->subdivision;
-        $output.=', '.$this->postalCode;
+        $output.=$this->city_name.', '.$this->subdivision_name;
+        $output.=', '.$this->_postalCode;
 
         //country
         $output.='<br/>';
-        $output.=$this->countryName;
+        $output.=$this->country_name;
         return $output;
     }
 
@@ -211,9 +212,10 @@ abstract class Address implements Model{
      * Children cannot override this method
      * @param int $addressId
      * @return mixed|void
+     * @throws Exception
      */
     final public static function load($addressId){
-    $db = Database::getInstance();
+        $db = Database::getInstance();
         $mysqli = $db->getConnection();
 
         $sql_query  = 'SELECT address.* ';
@@ -221,9 +223,12 @@ abstract class Address implements Model{
         $sql_query .= 'WHERE address_id = "' . (int) $addressId . '" ';
 
         $result = $mysqli->query($sql_query);
-//        if ($row = $result->fetch_assoc()) {
-//            return self::getInstance($row['address_type_id'], $row);
-//        }
+//        print_r($result);
+        if ($row = $result->fetch_assoc()) {
+//            print_r($row);
+           return self::getInstance($row['address_type_id'], $row);
+        }
+        throw new Exception('row not found');
     }
 
     /**

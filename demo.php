@@ -22,10 +22,10 @@
 
 //assigning values
     $addressResidence->countryName = 'Uganda';
-    $addressResidence->subdivision = 'State';
-    $addressResidence->cityName = 'Townsville';
-    $addressResidence->streetAddress1 = '1251';
-    $addressResidence->streetAddress2 = '9021';
+    $addressResidence->subdivision_name = 'State';
+    $addressResidence->city_name = 'Townsville';
+    $addressResidence->street_address_1 = '1251';
+    $addressResidence->street_address_2 = '9021';
     echo '<h2>Address object</h2>';
     echo '<tt><pre>'.var_export($addressResidence,true).'</pre></tt>';
 
@@ -87,9 +87,15 @@
     echo '<pre>'.var_export($test_object_cast_numbers,true).'</pre>';
 
     echo '<h2>Loading object from database</h2>';
-    $db_object = Address::load(1);
-    echo '<pre>'.var_export($db_object,true).'</pre>';
 
+    try {
+        $db_object = Address::load(1);
+        echo '<pre>' . var_export($db_object, true) . '</pre>';
+    }
+    catch (Exception $e){
+        echo $e->getMessage();
+        echo $e->getTraceAsString();
+    }
 
 
 
