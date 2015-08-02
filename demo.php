@@ -69,8 +69,23 @@
             'subdivision'=>'Territory'
         )
     );
-    echo $addressPark;
-    echo '<pre>'.var_export($addressPark,true).'</pre>';
+//    echo $addressPark;
+//    echo '<pre>'.var_export($addressPark,true).'</pre>';
+
+    echo '<h2>Testing type casting to an object</h2>';
+    $test_object_cast = (object)array(
+        'john' => 'kagga',
+        'other' => array(
+            'key' => 'value'
+        )
+    );
+
+    echo '<pre>'.var_export($test_object_cast,true).'</pre>';
+
+    echo '<h2>Testing type casting to an object using numbers</h2>';
+    $test_object_cast_numbers = (object)12354;
+    echo '<pre>'.var_export($test_object_cast_numbers,true).'</pre>';
+
 
 
 
