@@ -69,8 +69,8 @@
             'subdivision'=>'Territory'
         )
     );
-//    echo $addressPark;
-//    echo '<pre>'.var_export($addressPark,true).'</pre>';
+    echo $addressPark->display();
+    echo '<pre>'.var_export($addressPark,true).'</pre>';
 
     echo '<h2>Testing type casting to an object</h2>';
     $test_object_cast = (object)array(
@@ -85,6 +85,10 @@
     echo '<h2>Testing type casting to an object using numbers</h2>';
     $test_object_cast_numbers = (object)12354;
     echo '<pre>'.var_export($test_object_cast_numbers,true).'</pre>';
+
+    echo '<h2>Loading object from database</h2>';
+    $db_object = Address::load(1);
+    echo '<pre>'.var_export($db_object,true).'</pre>';
 
 
 

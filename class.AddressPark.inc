@@ -11,7 +11,7 @@
      * Park Address
      * Class AddressPark
      */
-class AddressPark extends Address {
+    class AddressPark extends Address {
 
 //    /**
 //     * Overriding the country in Address
@@ -28,7 +28,7 @@ class AddressPark extends Address {
         {
             $output = '<div style="background-color: brown">';
             $output .= parent::display();
-            $output .= '</div';
+            $output .= '</div>';
             return $output;
         }
 

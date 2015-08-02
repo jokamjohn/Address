@@ -11,7 +11,7 @@
      * Residence Address
      * Class AddressResidence
      */
-class AddressResidence extends Address {
+    class AddressResidence extends Address {
 
     /**
      * Force extending classes to implement init method

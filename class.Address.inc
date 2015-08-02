@@ -211,7 +211,18 @@ abstract class Address implements Model{
      * @return mixed|void
      */
     final public static function load($addressId){
+    $db = Database::getInstance();
+        $mysqli = $db->getConnection();
 
+        $query = 'SELECT address.*';
+        $query .= ' FROM address';
+        $query .= ' WHERE address_id ="'. (int)$addressId.'"';
+
+        $result = $mysqli->query($query);
+        if ($row = $result->fetch_object()){
+            var_dump($row);
+            exit;
+        }
     }
 
     /*
