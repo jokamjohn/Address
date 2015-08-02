@@ -14,6 +14,13 @@
 class AddressPark extends Address {
 
     /**
+     * Overriding the country in Address
+     * @var string
+     */
+    public $countryName = 'Uganda';
+
+
+    /**
      * Force extending classes to implement init method
      * Add function to the __construct method
      * @return mixed

@@ -61,3 +61,16 @@
         echo Address::isValidAddressTypeId($id) ? 'Valid' : 'Invalid';
         echo '</div>';
     }
+
+    echo '<h2>Address Park</h2>';
+    $addressPark = new AddressPark(
+        array(
+            'cityName'=>'Hamlet',
+            'subdivision'=>'Territory'
+        )
+    );
+    echo $addressPark;
+    echo '<pre>'.var_export($addressPark,true).'</pre>';
+
+
+
