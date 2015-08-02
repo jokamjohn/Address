@@ -89,12 +89,11 @@
     echo '<h2>Loading object from database</h2>';
 
     try {
-        $db_object = Address::load(1);
+        $db_object = Address::load(0);
         echo '<pre>' . var_export($db_object, true) . '</pre>';
     }
-    catch (Exception $e){
-        echo $e->getMessage();
-        echo $e->getTraceAsString();
+    catch (ExceptionAddress $e){
+        echo $e;
     }
 
 

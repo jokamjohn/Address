@@ -15,6 +15,8 @@ abstract class Address implements Model{
     const ADDRESS_TYPE_BUSINESS = 2;
     const ADDRESS_TYPE_PARK = 3;
 
+    const ERROR_CODE_ROW_NOT_FOUND = 1000;
+
     //Address types
     public static $validAddressTypes = array(
         Address::ADDRESS_TYPE_RESIDENCE => 'Residence',
@@ -228,7 +230,7 @@ abstract class Address implements Model{
 //            print_r($row);
            return self::getInstance($row['address_type_id'], $row);
         }
-        throw new Exception('row not found');
+        throw new ExceptionAddress('Address not found',self::ERROR_CODE_ROW_NOT_FOUND);
     }
 
     /**
