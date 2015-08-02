@@ -5,8 +5,14 @@
  * Date: 8/1/2015
  * Time: 12:53 PM
  */
-    require 'Address.inc';
-    require 'Database.inc';
+
+    /**
+     * Define auto-loader
+     * @param string $className
+     */
+    function __autoload($className){
+        include 'class.'.$className.'.inc';
+    }
 
     echo '<h2>Instantiating Address</h2>';
     $address = new Address();
