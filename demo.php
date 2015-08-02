@@ -36,7 +36,7 @@
     echo $addressResidence->display();
 
     echo '<h2>Testing __construct with an array</h2>';
-    $address_2 = new Address(array(
+    $addressBusiness = new AddressBusiness(array(
         'countryName' => 'Uganda',
         'subdivision' => 'Region',
         'cityName' => 'Villageland',
@@ -45,10 +45,13 @@
 
     ));
 
-    echo $address_2->display();
+    echo $addressBusiness->display();
+    echo '<h2>Debugging AddressBusiness</h2>';
+    echo '<tt><pre>'.var_export($addressBusiness,true).'</pre></tt>';
 
     echo '<h2>Address2 __toString</h2>';
-    echo $address_2;
+    echo $addressBusiness;
+
 
     echo '<h2>Displaying address types</h2>';
     echo '<pre>'.var_export(Address::$validAddressTypes,true).'</pre>';

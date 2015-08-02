@@ -8,7 +8,7 @@
 /*
  * Physical Address
  */
-class Address {
+abstract class Address {
 
     //constants
     const ADDRESS_TYPE_RESIDENCE = 1;
